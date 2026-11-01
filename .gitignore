@@ -1,0 +1,5 @@
+# Build output (published on the Releases page instead)
+*.exe
+dist/
+*.pdb
+build/
