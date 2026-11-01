@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="docs/logo.png" width="72" alt="شعار ClipQ">
+<img src="assets/logo.png" width="72" alt="شعار ClipQ">
 
 # ClipQ
 

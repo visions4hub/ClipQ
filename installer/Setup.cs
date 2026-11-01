@@ -12,7 +12,7 @@ using L = ClipQ.L;
 static class Setup
 {
     const string Title = "ClipQ";
-    const string Version = "1.3.0";
+    const string Version = "1.3.1";
     const string RunKey = @"Software\Microsoft\Windows\CurrentVersion\Run";
     const string UninstallKey = @"Software\Microsoft\Windows\CurrentVersion\Uninstall\ClipQ";
 

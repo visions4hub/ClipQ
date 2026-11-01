@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/logo.png" width="72" alt="ClipQ logo">
+<img src="assets/logo.png" width="72" alt="ClipQ logo">
 
 # ClipQ
 

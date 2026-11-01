@@ -1,7 +1,7 @@
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Drawing.Text;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace ClipQ
@@ -19,19 +19,21 @@ namespace ClipQ
             return new Font(style == FontStyle.Bold ? "Segoe UI Semibold" : "Segoe UI", size, FontStyle.Regular);
         }
 
-        // The brand mark: a rounded square in the indigo→cyan gradient with a white Q.
+        // The brand mark (assets\logo.png), embedded in the exe by build.bat.
+        static readonly Image LogoImage = LoadLogo();
+
+        static Image LoadLogo()
+        {
+            using (var s = Assembly.GetExecutingAssembly().GetManifestResourceStream("logo.png"))
+            using (var img = Image.FromStream(s))
+                return new Bitmap(img); // a copy, so the stream can close
+        }
+
         public static void DrawLogo(Graphics g, Rectangle r)
         {
-            g.SmoothingMode = SmoothingMode.AntiAlias;
-            g.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
-            using (var path = Theme.RoundRect(r, Math.Max(2, r.Width * 10 / 44)))
-            using (var brush = new LinearGradientBrush(new Rectangle(r.X, r.Y, r.Width + 1, r.Height + 1), Theme.BrandFrom, Theme.BrandTo, 45f))
-            using (var font = new Font("Segoe UI", r.Height * 0.6f, FontStyle.Bold, GraphicsUnit.Pixel))
-            using (var sf = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center })
-            {
-                g.FillPath(brush, path);
-                g.DrawString("Q", font, Brushes.White, new RectangleF(r.X, r.Y + r.Height * 0.02f, r.Width, r.Height), sf);
-            }
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            g.DrawImage(LogoImage, r);
         }
 
         public static void FillRound(Graphics g, Rectangle r, int radius, Color fill, Color border)

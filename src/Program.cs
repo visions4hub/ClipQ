@@ -62,7 +62,6 @@ namespace ClipQ
     {
         public static bool Dark;
         public static Color Bg, Surface, Surface2, Border, Text, Muted, Accent, AccentHover, AccentSoft, OnAccent, Danger;
-        public static readonly Color BrandFrom = Color.FromArgb(0x4f, 0x46, 0xe5), BrandTo = Color.FromArgb(0x06, 0xb6, 0xd4);
 
         static Theme() { Refresh(); }
 

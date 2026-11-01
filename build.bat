@@ -15,6 +15,6 @@ echo Built dist\ClipQ-Setup-AR.exe and dist\ClipQ-Setup-EN.exe
 exit /b 0
 
 :variant
-%CSC% %~2 /out:build\%1\ClipQ.exe /r:System.Web.Extensions.dll /r:System.Windows.Forms.dll /r:System.Drawing.dll src\*.cs || exit /b 1
+%CSC% %~2 /out:build\%1\ClipQ.exe /resource:assets\logo.png,logo.png /r:System.Web.Extensions.dll /r:System.Windows.Forms.dll /r:System.Drawing.dll src\*.cs || exit /b 1
 %CSC% %~2 /win32manifest:installer\app.manifest /resource:build\%1\ClipQ.exe,ClipQ.exe /out:dist\ClipQ-Setup-%1.exe /r:System.Windows.Forms.dll installer\Setup.cs src\Lang.cs || exit /b 1
 exit /b 0
